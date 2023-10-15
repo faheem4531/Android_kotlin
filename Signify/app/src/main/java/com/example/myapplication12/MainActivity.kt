@@ -1,4 +1,4 @@
-package com.example.myapplication12
+package com.example.Signify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

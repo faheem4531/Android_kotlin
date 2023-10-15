@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application12"
+rootProject.name = "Signify"
 include(":app")
