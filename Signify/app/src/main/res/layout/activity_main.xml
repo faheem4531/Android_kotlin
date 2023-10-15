@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="20sp"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20sp"
+        tools:context=".MainActivity"
+        android:paddingBottom="35sp">
+<!--App Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +33,7 @@
         android:layout_marginBottom="30sp"
         android:text="Signup Here"
         />
+<!-- Name -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,8 +50,9 @@
             android:layout_height="wrap_content"
             android:hint="Max"
             android:textSize="15sp"
-            android:id="@+id/etName" />
+            android:id="@+id/name" />
     </LinearLayout>
+<!--  Email -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +71,7 @@
             android:textSize="15sp"
             android:id="@+id/mail" />
     </LinearLayout>
+<!--  Password -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,6 +92,7 @@
             android:id="@+id/pass"
             />
     </LinearLayout>
+<!--  Confirm password -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,61 +110,228 @@
             android:inputType="textPassword"
             android:textSize="15sp"
             android:hint="confirm password"
-            android:id="@+id/pass"
+            android:id="@+id/confirmPass"
             />
     </LinearLayout>
-    <RadioGroup
+<!--   Gender -->
+    <LinearLayout
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"
+            android:text="Gender"
+            android:textSize="15sp" />
+
+        <RadioGroup
+            android:layout_width="191dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:checked="true"
+                android:text="Male"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+<!--    Sports -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10sp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"
+            android:text="Sports"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cbCricket"
+                android:layout_width="90dp"
+                android:layout_height="28dp"
+                android:checked="true"
+                android:text="Cricket"
+                android:textSize="13sp" />
+
+            <CheckBox
+                android:id="@+id/cbHockey"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:text="Hockey"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <CheckBox
+            android:id="@+id/cbFootball"
+            android:layout_width="90dp"
+            android:layout_height="28dp"
+            android:text="Football"
+            android:textSize="13sp" />
+    </LinearLayout>
+<!--    Date of birth -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <RadioButton
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Male"
-            android:checked="true"
-            android:id="@+id/rbMale" />
-        <RadioButton
-            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="Date of birth"
+            android:layout_marginRight="20sp"
+            />
+        <EditText
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Female"
-            android:id="@+id/rbFemale" />
-
-    </RadioGroup>
-
+            android:inputType="date"
+            android:hint="01/01/2001"
+            android:textSize="15sp"
+            android:id="@+id/birth" />
+    </LinearLayout>
+<!--    City -->
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-        <CheckBox
-            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Cricket"
-            android:id="@+id/cbCricket"
-            android:checked="true" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hockey"
-            android:id="@+id/cbHockey"
+            android:textSize="15sp"
+            android:text="City"
+            android:layout_marginRight="20sp"
             />
-        <CheckBox
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Football"
-            android:id="@+id/cbFootball" />
+            android:hint="Lahore"
+            android:textSize="15sp"
+            android:id="@+id/city" />
     </LinearLayout>
-
-    <Button
+<!--    Country -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:onClick="signUpUser" />
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Country"
+            android:layout_marginRight="20sp"
+            />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Pakistan"
+            android:textSize="15sp"
+            android:id="@+id/country" />
+    </LinearLayout>
+<!--    Skills -->
+    <LinearLayout
+        android:layout_width="314dp"
         android:layout_height="wrap_content"
-        android:text="Output Here"
-        android:id="@+id/tvOutput"
-        />
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20sp"
+            android:text="Skills"
+            android:textSize="15sp" />
+
+        <RadioGroup
+            android:layout_width="191dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/begin"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10sp"
+                android:checked="true"
+                android:text="Beginner"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/advance"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Advance"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+<!--policy check -->
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I accept the terms and Conditions."
+                android:layout_marginTop="25sp"
+                android:layout_marginBottom="15sp"
+                android:id="@+id/agrement"/>
+
+        </LinearLayout>
+<!--    Submit-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="signUpUser"
+                android:layout_marginRight="25sp"
+                android:text="Submit" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clearData"
+                android:text="Clear"
+                 />
+        </LinearLayout>
+
+<!--Show Results -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30sp"
+            >
+             <TextView
+                android:id="@+id/tvOutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:paddingHorizontal="30sp"
+                android:textSize="18sp"
+                android:text="--------" />
+        </LinearLayout>
 </LinearLayout>
+</ScrollView>
