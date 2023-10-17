@@ -194,7 +194,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        >
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -202,14 +202,34 @@
             android:text="Date of birth"
             android:layout_marginRight="20sp"
             />
-        <EditText
-            android:layout_width="200dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="date"
-            android:hint="01/01/2001"
             android:textSize="15sp"
-            android:id="@+id/birth" />
+            android:id="@+id/birth"
+            android:text="set view"
+            android:layout_marginRight="10sp"
+            />
+        <Switch
+            android:id="@+id/switchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="handleToggle"
+            android:checked="true" />
+        </LinearLayout>
     </LinearLayout>
+        <DatePicker
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_marginTop="15sp"
+            android:visibility="gone"
+            android:id="@+id/datePiker"/>
 <!--    City -->
     <LinearLayout
         android:layout_width="wrap_content"
