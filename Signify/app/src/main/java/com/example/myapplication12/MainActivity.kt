@@ -1,5 +1,6 @@
 package com.example.Signify
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,10 +9,8 @@ import android.widget.DatePicker
 import android.widget.RadioButton
 import android.widget.Switch
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.Period
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun signUpUser(view: View) {
 //        declaration
         var etName =      findViewById<TextView>     (R.id.name);
@@ -55,12 +55,17 @@ class MainActivity : AppCompatActivity() {
 
         var user_date = date.toString() +"/" + mon.toString() +"/" + year.toString();
 
-        val currentDate = LocalDate.now().toString()
+        val currentDate = LocalDate.now()
+        val c_year = currentDate.getYear().toInt()
+        val c_mon = currentDate.getMonthValue().toInt()
+        val c_date = currentDate.getDayOfMonth().toInt()
+        var age=0;
+        age=c_year-year-1;
 
-        output.setText(currentDate);
-
-
-
+        if (c_mon>mon)
+            age=age+1
+        else if ((c_mon==mon) && (c_date>=date))
+            age=age+1
 
 
 
@@ -92,30 +97,32 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        if (_name.length<1 || (_password.length<1) || (_city.length<1) || (_country.length<1) || (_mail.length<1))
-//            output.setText("Error! Fill above all fields");
-//        else if(true)
-//            output.setText("Error! You are under 18");
-//        else if (_password != _confrmPas );
-//            output.setText("Error! Password not match");
-//        else if (!female.isChecked && !male.isChecked)
-//            output.setText("Select your gender");
-//        else if (hobbies.length<1)
-//            output.setText("Select atleast one Sport");
-//        else if (!skillBegin.isChecked && !skillPro.isChecked)
-//            output.setText("Error! Chose your skill level");
-//        else if (!agrement.isChecked )
-//            output.setText("Please check the terms and condition");
-//        else
-//            output.setText(
-//                "Welcome " + _name +",\n "
-//                + _mail+",\n"
-//                +_gender + ",\n"
-//                + "born: "+_dateView+",\n"
-//                +_city+", "+_country+".\n"
-//                +"sports " + hobbies + ",\n"
-//                +"Skills " +skills
-//            );
+        if (_name.length<1 || (_password.length<1) || (_city.length<1) || (_country.length<1) || (_mail.length<1))
+            output.setText("Error! Fill above all fields");
+        else if (_password != _confrmPas )
+            output.setText("Error! Password not match");
+        else if (!female.isChecked && !male.isChecked)
+            output.setText("Select your gender");
+        else if (hobbies.length<1)
+            output.setText("Select atleast one Sport");
+        else if(age==0)
+            output.setText("select date of birth");
+        else if(age<18)
+            output.setText("Error! You are under 18");
+        else if (!skillBegin.isChecked && !skillPro.isChecked)
+            output.setText("Error! Chose your skill level");
+        else if (!agrement.isChecked )
+            output.setText("Please check the terms and condition");
+        else
+            output.setText(
+                "Welcome " + _name +",\n "
+                + _mail+",\n"
+                +_gender + ",\n"
+                + "born: "+user_date+",\n"
+                +_city+", "+_country+".\n"
+                +"sports " + hobbies + ",\n"
+                +"Skills " +skills
+            );
 
     }
 
@@ -136,6 +143,8 @@ class MainActivity : AppCompatActivity() {
         var skillPro = findViewById<RadioButton>(R.id.advance)
         var agrement = findViewById<CheckBox>(R.id.agrement)
         var output = findViewById<TextView>(R.id.tvOutput)
+        var switch = findViewById<Switch>  (R.id.switchView);
+        var dateView =findViewById<DatePicker>  (R.id.datePiker);
 
         // Clear all the fields
         etName.text = null
@@ -147,7 +156,8 @@ class MainActivity : AppCompatActivity() {
         cbCric.isChecked = false
         cbFootball.isChecked = false
         cbHockey.isChecked = false
-        birth.text = null
+        switch.isChecked=false
+        dateView.visibility=View.GONE
         city.text = null
         country.text = null
         skillBegin.isChecked = false
