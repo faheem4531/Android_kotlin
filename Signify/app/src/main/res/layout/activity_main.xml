@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="20sp"
         tools:context=".MainActivity"
-        android:paddingBottom="35sp">
+        android:gravity="center"
+        android:padding="25sp"
+        >
 <!--App Title -->
     <TextView
         android:layout_width="match_parent"
@@ -22,17 +19,18 @@
         android:gravity="center"
         android:textSize="40sp"
         android:layout_marginTop="50sp"
+        android:layout_marginBottom="20dp"
         android:text="Signify"
         />
+<!--  page title-->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="18sp"
-        android:layout_marginTop="15sp"
-        android:layout_marginBottom="30sp"
-        android:text="Login"
-        />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textSize="22sp"
+    android:layout_marginBottom="25sp"
+    android:text="Login"
+    />
 <!--  Email -->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -56,7 +54,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp">
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -69,45 +69,33 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textSize="15sp"
-            android:hint="************"
+            android:hint="**********"
             android:id="@+id/pass"
             />
     </LinearLayout>
-<!--    Login-->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            >
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="login"
-                android:layout_marginRight="25sp"
-                android:text="Login" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="signUP"
-                android:text="Create acount"
-                 />
-        </LinearLayout>
-
-<!--Show Results -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="30sp"
-            >
-             <TextView
-                android:id="@+id/tvOutput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:paddingHorizontal="30sp"
-                android:textSize="18sp"
-                android:text="" />
-        </LinearLayout>
+<!--   Login btn -->
+     <Button
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:onClick="login"
+     android:text="Login"
+     />
+<!--   Create new account      -->
+     <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:onClick="signUP"
+     android:text="Create new account"
+     android:layout_marginTop="20sp"
+     />
+<!--Show Errors -->
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:gravity="center"
+        android:paddingHorizontal="30sp"
+        android:text=""
+        android:textSize="18sp" />
 </LinearLayout>
-</ScrollView>

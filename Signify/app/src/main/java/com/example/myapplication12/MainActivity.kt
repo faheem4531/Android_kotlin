@@ -5,13 +5,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.CheckBox
-import android.widget.DatePicker
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.example.myapplication12.SignUp
-import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun login(view: View) {
 //        declaration
         var email =       findViewById<TextView>     (R.id.mail);
@@ -38,19 +33,20 @@ class MainActivity : AppCompatActivity() {
             output.setText("Enter Password!");
 
         else {
-
+            output.setText("");
         }
     }
 
     fun signUP (view: View){
-//        var email = findViewById<TextView>(R.id.mail)
-//        var password = findViewById<TextView>(R.id.pass)
-
-        // Clear all the fields
-//        email.text = null
-//        password.text = null
 
         val Intent = Intent(this, SignUp::class.java)
         startActivity(Intent);
+
+        var email = findViewById<TextView>(R.id.mail)
+        var password = findViewById<TextView>(R.id.pass)
+
+        // Clear all the fields
+        email.text = null
+        password.text = null
     }
 }
