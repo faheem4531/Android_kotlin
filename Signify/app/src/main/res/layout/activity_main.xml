@@ -31,27 +31,8 @@
         android:textSize="18sp"
         android:layout_marginTop="15sp"
         android:layout_marginBottom="30sp"
-        android:text="Signup Here"
+        android:text="Login"
         />
-<!-- Name -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Enter name"
-            android:layout_marginRight="20sp"
-            />
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Max"
-            android:textSize="15sp"
-            android:id="@+id/name" />
-    </LinearLayout>
 <!--  Email -->
     <LinearLayout
         android:layout_width="wrap_content"
@@ -92,232 +73,7 @@
             android:id="@+id/pass"
             />
     </LinearLayout>
-<!--  Confirm password -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Confirm Pass."
-            android:layout_marginRight="20sp"
-            />
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textSize="15sp"
-            android:hint="confirm password"
-            android:id="@+id/confirmPass"
-            />
-    </LinearLayout>
-<!--   Gender -->
-    <LinearLayout
-        android:layout_width="314dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20sp"
-            android:text="Gender"
-            android:textSize="15sp" />
-
-        <RadioGroup
-            android:layout_width="191dp"
-            android:layout_height="25dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbMale"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10sp"
-                android:checked="true"
-                android:text="Male"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/rbFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                android:textSize="13sp" />
-        </RadioGroup>
-
-    </LinearLayout>
-<!--    Sports -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10sp">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20sp"
-            android:text="Sports"
-            android:textSize="15sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/cbCricket"
-                android:layout_width="90dp"
-                android:layout_height="28dp"
-                android:checked="true"
-                android:text="Cricket"
-                android:textSize="13sp" />
-
-            <CheckBox
-                android:id="@+id/cbHockey"
-                android:layout_width="match_parent"
-                android:layout_height="28dp"
-                android:text="Hockey"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-        <CheckBox
-            android:id="@+id/cbFootball"
-            android:layout_width="90dp"
-            android:layout_height="28dp"
-            android:text="Football"
-            android:textSize="13sp" />
-    </LinearLayout>
-<!--    Date of birth -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Date of birth"
-            android:layout_marginRight="20sp"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:id="@+id/birth"
-            android:text="set view"
-            android:layout_marginRight="10sp"
-            />
-        <Switch
-            android:id="@+id/switchView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="handleToggle"
-            android:checked="true" />
-        </LinearLayout>
-    </LinearLayout>
-        <DatePicker
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
-            android:layout_marginTop="15sp"
-            android:visibility="gone"
-            android:id="@+id/datePiker"/>
-<!--    City -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="City"
-            android:layout_marginRight="20sp"
-            />
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Lahore"
-            android:textSize="15sp"
-            android:id="@+id/city" />
-    </LinearLayout>
-<!--    Country -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="Country"
-            android:layout_marginRight="20sp"
-            />
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Pakistan"
-            android:textSize="15sp"
-            android:id="@+id/country" />
-    </LinearLayout>
-<!--    Skills -->
-    <LinearLayout
-        android:layout_width="314dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20sp"
-            android:text="Skills"
-            android:textSize="15sp" />
-
-        <RadioGroup
-            android:layout_width="191dp"
-            android:layout_height="25dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/begin"
-                android:layout_width="90dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10sp"
-                android:checked="true"
-                android:text="Beginner"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:id="@+id/advance"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:text="Advance"
-                android:textSize="13sp" />
-        </RadioGroup>
-
-    </LinearLayout>
-<!--policy check -->
-    <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I accept the terms and Conditions."
-                android:layout_marginTop="25sp"
-                android:layout_marginBottom="15sp"
-                android:id="@+id/agrement"/>
-
-        </LinearLayout>
-<!--    Submit-->
+<!--    Login-->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -326,14 +82,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="signUpUser"
+                android:onClick="login"
                 android:layout_marginRight="25sp"
-                android:text="Submit" />
+                android:text="Login" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="clearData"
-                android:text="Clear"
+                android:onClick="signUP"
+                android:text="Create acount"
                  />
         </LinearLayout>
 
@@ -351,7 +107,7 @@
                 android:textAlignment="textStart"
                 android:paddingHorizontal="30sp"
                 android:textSize="18sp"
-                android:text="--------" />
+                android:text="" />
         </LinearLayout>
 </LinearLayout>
 </ScrollView>
