@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.example.myapplication12.Home
 import com.example.myapplication12.SignUp
 
 class MainActivity : AppCompatActivity() {
@@ -34,13 +35,15 @@ class MainActivity : AppCompatActivity() {
 
         else {
             output.setText("");
+            val HomePage = Intent(this,Home::class.java)
+            startActivity(HomePage);
         }
     }
 
     fun signUP (view: View){
 
-        val Intent = Intent(this, SignUp::class.java)
-        startActivity(Intent);
+        val Signup = Intent(this, SignUp::class.java)
+        startActivity(Signup);
 
         var email = findViewById<TextView>(R.id.mail)
         var password = findViewById<TextView>(R.id.pass)
