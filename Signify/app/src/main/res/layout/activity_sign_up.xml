@@ -17,105 +17,108 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20sp"
-            tools:context=".MainActivity"
-            android:paddingBottom="35sp">
+            android:paddingBottom="35sp"
+            tools:context=".MainActivity">
             <!--App Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="40sp"
                 android:layout_marginTop="50sp"
+                android:gravity="center"
                 android:text="Signify"
-                />
+                android:textSize="40sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="18sp"
                 android:layout_marginTop="15sp"
                 android:layout_marginBottom="30sp"
+                android:gravity="center"
                 android:text="Signup Here"
-                />
+                android:textSize="18sp" />
             <!-- Name -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Enter name"
-                    android:layout_marginRight="20sp"
-                    />
-                <EditText
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Max"
-                    android:textSize="15sp"
-                    android:id="@+id/name" />
-            </LinearLayout>
             <!--  Email -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="E-mail"
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="E-mail"
+                    android:textSize="15sp"
+                    android:inputType="textEmailAddress"/>
+
                 <EditText
+                    android:id="@+id/mail"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="i.e max@gmail.com"
-                    android:textSize="15sp"
-                    android:id="@+id/mail" />
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20sp"
+                        android:text="Enter name"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Max"
+                        android:textSize="15sp" />
+                </LinearLayout>
             </LinearLayout>
             <!--  Password -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Password"
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="Password"
+                    android:textSize="15sp" />
+
                 <EditText
+                    android:id="@+id/pass"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textSize="15sp"
                     android:hint="************"
-                    android:id="@+id/pass"
-                    />
+                    android:inputType="textPassword"
+                    android:textSize="15sp" />
             </LinearLayout>
             <!--  Confirm password -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Confirm Pass."
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="Confirm Pass."
+                    android:textSize="15sp" />
+
                 <EditText
+                    android:id="@+id/confirmPass"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textSize="15sp"
                     android:hint="confirm password"
-                    android:id="@+id/confirmPass"
-                    />
+                    android:inputType="textPassword"
+                    android:textSize="15sp" />
             </LinearLayout>
             <!--   Gender -->
             <LinearLayout
@@ -132,7 +135,7 @@
 
                 <RadioGroup
                     android:layout_width="191dp"
-                    android:layout_height="25dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -187,6 +190,7 @@
                         android:textSize="13sp" />
 
                 </LinearLayout>
+
                 <CheckBox
                     android:id="@+id/cbFootball"
                     android:layout_width="90dp"
@@ -197,80 +201,83 @@
             <!--    Date of birth -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Date of birth"
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="Date of birth"
+                    android:textSize="15sp" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/birth"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:id="@+id/birth"
-                        android:text="set view"
                         android:layout_marginRight="10sp"
-                        />
+                        android:text="set view"
+                        android:textSize="15sp" />
+
                     <Switch
                         android:id="@+id/switchView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="handleToggle"
-                        android:checked="true" />
+                        android:checked="true"
+                        android:onClick="handleToggle" />
                 </LinearLayout>
             </LinearLayout>
+
             <DatePicker
+                android:id="@+id/datePiker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:datePickerMode="spinner"
-                android:calendarViewShown="false"
                 android:layout_marginTop="15sp"
-                android:visibility="gone"
-                android:id="@+id/datePiker"/>
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:visibility="gone" />
             <!--    City -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="City"
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="City"
+                    android:textSize="15sp" />
+
                 <EditText
+                    android:id="@+id/city"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="Lahore"
-                    android:textSize="15sp"
-                    android:id="@+id/city" />
+                    android:textSize="15sp" />
             </LinearLayout>
             <!--    Country -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Country"
                     android:layout_marginRight="20sp"
-                    />
+                    android:text="Country"
+                    android:textSize="15sp" />
+
                 <EditText
+                    android:id="@+id/country"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:hint="Pakistan"
-                    android:textSize="15sp"
-                    android:id="@+id/country" />
+                    android:textSize="15sp" />
             </LinearLayout>
             <!--    Skills -->
             <LinearLayout
@@ -312,50 +319,51 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <CheckBox
+                    android:id="@+id/agrement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="I accept the terms and Conditions."
                     android:layout_marginTop="25sp"
                     android:layout_marginBottom="15sp"
-                    android:id="@+id/agrement"/>
+                    android:text="I accept the terms and Conditions." />
 
             </LinearLayout>
             <!--    Submit-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                >
+                android:gravity="center">
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="signUpUser"
                     android:layout_marginRight="25sp"
+                    android:onClick="signUpUser"
                     android:text="Sign Up" />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clearData"
-                    android:text="Clear"
-                    />
+                    android:text="Clear" />
             </LinearLayout>
 
             <!--Show Results -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginTop="30sp"
-                >
+                android:gravity="center">
+
                 <TextView
                     android:id="@+id/tvOutput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="textStart"
                     android:paddingHorizontal="30sp"
-                    android:textSize="18sp"
-                    android:text="" />
+                    android:text=""
+                    android:textAlignment="textStart"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
