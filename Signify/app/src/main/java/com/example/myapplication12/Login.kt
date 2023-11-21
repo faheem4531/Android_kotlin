@@ -33,6 +33,7 @@ class Login : AppCompatActivity() {
         else {
             output.setText("");
             val HomePage = Intent(this,Home::class.java)
+            HomePage.putExtra("mail",_mail)
             startActivity(HomePage);
         }
     }
