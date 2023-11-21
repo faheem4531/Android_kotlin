@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+//        Time delay function my login page will show after 3000ms of this activity
         Handler(Looper.getMainLooper()).postDelayed({
         var intent=Intent(this,Login::class.java)
             startActivity(intent)

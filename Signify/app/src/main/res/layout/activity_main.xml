@@ -9,8 +9,9 @@
         tools:context=".MainActivity"
         android:gravity="center"
         >
-<ImageView
-    android:layout_width="170dp"
-    android:layout_height="170dp"
-    android:background="@drawable/signup"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/signup" />
 </LinearLayout>
