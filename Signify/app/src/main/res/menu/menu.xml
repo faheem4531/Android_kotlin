@@ -4,20 +4,21 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
 <item
-    android:id="@+id/mi_search"
+    android:id="@+id/search"
     app:showAsAction="always"
     android:icon="@drawable/search_bar"
     android:title="Search"
     />
-<item android:id="@+id/mi_profile"
+<item android:id="@+id/activity"
     android:title="Profile"
-    android:icon="@drawable/search_bar"
     app:showAsAction="never">
     <menu>
-        <item android:id="@+id/mi_exit"
-            android:title="Exit"
+        <item android:id="@+id/close_app"
+            android:title="Close app"
             app:showAsAction="never"/>
-
+        <item android:id="@+id/restar_app"
+            android:title="Restart app"
+            app:showAsAction="never"/>
     </menu>
 </item>
 

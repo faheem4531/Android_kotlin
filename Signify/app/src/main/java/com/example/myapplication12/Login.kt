@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import com.example.Signify.MainActivity
 import com.example.Signify.R
 
 class Login : AppCompatActivity() {
@@ -26,7 +28,24 @@ class Login : AppCompatActivity() {
         return true
     }
 
+    //Menu items click activity function
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.close_app -> {
+                finishAffinity()
+            }
+            R.id.restar_app ->{
+                var restartApp = Intent(this,MainActivity::class.java)
+                startActivity(restartApp)
+                finish()
+                return true
+            }
+        }
 
+        return super.onOptionsItemSelected(item)
+    }
+
+//    handle Login
     fun login(view: View) {
 //        declaration
         var email =       findViewById<TextView>     (R.id.mail);
@@ -52,6 +71,7 @@ class Login : AppCompatActivity() {
         }
     }
 
+    //Handle Signup
     fun signUP (view: View){
 
         val Signup = Intent(this, SignUp::class.java)
@@ -65,3 +85,4 @@ class Login : AppCompatActivity() {
         password.text = null
     }
 }
+

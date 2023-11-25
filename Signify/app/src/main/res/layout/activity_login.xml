@@ -16,10 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tb_main"
-            app:title="Main Menu"
+            app:title="Signify"
+            app:titleTextColor="@color/white"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="enterAlways|scroll"
-
             />
     </com.google.android.material.appbar.AppBarLayout>
 
