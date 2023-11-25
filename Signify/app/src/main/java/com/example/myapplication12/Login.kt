@@ -3,15 +3,29 @@ package com.example.myapplication12
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.TextView
 import com.example.Signify.R
 
 class Login : AppCompatActivity() {
+    //get ToolBar
+    lateinit var tabBar: androidx.appcompat.widget.Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        tabBar=findViewById(R.id.tb_main)
+        setSupportActionBar(tabBar)
     }
+
+    //OverRide our tabBar to menu.xml
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        return true
+    }
+
 
     fun login(view: View) {
 //        declaration

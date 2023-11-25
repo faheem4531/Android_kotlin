@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+<item
+    android:id="@+id/mi_search"
+    app:showAsAction="always"
+    android:icon="@drawable/search_bar"
+    android:title="Search"
+    />
+<item android:id="@+id/mi_profile"
+    android:title="Profile"
+    android:icon="@drawable/search_bar"
+    app:showAsAction="never">
+    <menu>
+        <item android:id="@+id/mi_exit"
+            android:title="Exit"
+            app:showAsAction="never"/>
+
+    </menu>
+</item>
+
+</menu>
