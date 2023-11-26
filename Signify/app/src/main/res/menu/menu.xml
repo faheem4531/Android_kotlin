@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 <!--    Searchbar -->
    <item
@@ -11,12 +11,6 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
      app:actionViewClass="androidx.appcompat.widget.SearchView"
        />
 
-<!--    Login -->
-    <item
-        android:id="@+id/directLogin"
-        app:showAsAction="ifRoom"
-        android:title="Guest Login"
-        />
 
 <!--    Activity -->
     <item
@@ -27,17 +21,28 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         >
         <menu>
 
+            <!--  Guest  Login -->
+            <item
+                android:id="@+id/directLogin"
+                android:title="Guest Login"
+                android:icon="@drawable/baseline_home_24"
+                />
+
 <!--            Activity -->
-        <item android:id="@+id/activity"
+             <item android:id="@+id/activity"
             android:title="Activity"
             app:showAsAction="never"
+            android:icon="@drawable/baseline_airplanemode_inactive_24"
             >
             <menu>
                 <item android:id="@+id/close_app"
                     android:title="Close app"
+                    android:icon="@drawable/baseline_closeapp_24"
                     app:showAsAction="never"/>
+
                 <item android:id="@+id/restar_app"
                     android:title="Restart app"
+                    android:icon="@drawable/baseline_restart_alt_24"
                     app:showAsAction="never"/>
             </menu>
 
@@ -48,6 +53,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/signup"
                 app:showAsAction=""
                 android:title="SignUp"
+                android:icon="@drawable/baseline_supervisor_account_24"
                 />
 
         </menu>
