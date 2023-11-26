@@ -23,7 +23,7 @@
             />
     </com.google.android.material.appbar.AppBarLayout>
 
-
+<!--Layout Code -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,23 +34,13 @@
         android:padding="25sp"
         >
 
-        <!--App Title -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="40sp"
-            android:layout_marginTop="50sp"
-            android:layout_marginBottom="20dp"
-            android:text="Signify"
-            />
         <!--  page title-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="22sp"
-            android:layout_marginBottom="25sp"
+            android:textSize="35sp"
+            android:layout_marginBottom="50sp"
             android:text="Login"
             />
         <!--  Email -->

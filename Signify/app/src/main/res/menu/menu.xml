@@ -2,24 +2,58 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
     >
+<!--    Searchbar -->
+   <item
+     android:id="@+id/search"
+     app:showAsAction="always"
+     android:icon="@drawable/search_bar"
+     android:title="Search"
+     app:actionViewClass="androidx.appcompat.widget.SearchView"
+       />
 
-<item
-    android:id="@+id/search"
-    app:showAsAction="always"
-    android:icon="@drawable/search_bar"
-    android:title="Search"
-    />
-<item android:id="@+id/activity"
-    android:title="Profile"
-    app:showAsAction="never">
-    <menu>
-        <item android:id="@+id/close_app"
-            android:title="Close app"
-            app:showAsAction="never"/>
-        <item android:id="@+id/restar_app"
-            android:title="Restart app"
-            app:showAsAction="never"/>
-    </menu>
-</item>
+<!--    Login -->
+    <item
+        android:id="@+id/directLogin"
+        app:showAsAction="ifRoom"
+        android:title="Guest Login"
+        />
+
+<!--    Activity -->
+    <item
+        android:id="@+id/menu"
+        android:title="menu"
+        app:showAsAction="always"
+        android:icon="@drawable/menu_icon"
+        >
+        <menu>
+
+<!--            Activity -->
+        <item android:id="@+id/activity"
+            android:title="Activity"
+            app:showAsAction="never"
+            >
+            <menu>
+                <item android:id="@+id/close_app"
+                    android:title="Close app"
+                    app:showAsAction="never"/>
+                <item android:id="@+id/restar_app"
+                    android:title="Restart app"
+                    app:showAsAction="never"/>
+            </menu>
+
+        </item>
+
+            <!--    signUp-->
+            <item
+                android:id="@+id/signup"
+                app:showAsAction=""
+                android:title="SignUp"
+                />
+
+        </menu>
+
+    </item>
+
+
 
 </menu>

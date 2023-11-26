@@ -10,6 +10,12 @@ import android.widget.TextView
 import com.example.Signify.MainActivity
 import com.example.Signify.R
 
+
+import android.widget.SearchView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+
+
 class Login : AppCompatActivity() {
     //get ToolBar
     lateinit var tabBar: androidx.appcompat.widget.Toolbar
@@ -18,15 +24,30 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+//        set menu to toolbar
         tabBar=findViewById(R.id.tb_main)
         setSupportActionBar(tabBar)
     }
 
-    //OverRide our tabBar to menu.xml
+    //OverRide to our menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu,menu)
+        menuInflater.inflate(R.menu.menu, menu)
+        val guestLogin = menu?.findItem(R.id.directLogin)
+
+        menu?.let { actualMenu ->
+            val searchItem = actualMenu.findItem(R.id.search)
+            val searchView = searchItem.actionView as? SearchView
+
+            searchView?.apply {
+                queryHint = "Search Google"
+                // Set listeners or handle search functionality
+            }
+        }
+
         return true
     }
+
+
 
     //Menu items click activity function
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -34,16 +55,30 @@ class Login : AppCompatActivity() {
             R.id.close_app -> {
                 finishAffinity()
             }
-            R.id.restar_app ->{
+            R.id.restar_app -> {
                 var restartApp = Intent(this,MainActivity::class.java)
                 startActivity(restartApp)
                 finish()
                 return true
             }
+            R.id.signup -> {
+                var signUp = Intent (this, SignUp::class.java)
+                startActivity(signUp)
+                return true
+            }
+            R.id.directLogin->{
+                var dirrectHome = Intent (this, Home::class.java)
+                startActivity(dirrectHome)
+            }
         }
 
         return super.onOptionsItemSelected(item)
     }
+
+
+
+
+
 
 //    handle Login
     fun login(view: View) {
@@ -70,6 +105,8 @@ class Login : AppCompatActivity() {
             startActivity(HomePage);
         }
     }
+
+
 
     //Handle Signup
     fun signUP (view: View){
