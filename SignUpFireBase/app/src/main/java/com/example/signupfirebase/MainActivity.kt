@@ -84,8 +84,6 @@ class MainActivity : AppCompatActivity() {
         else
             Toast.makeText(this,"Signup Fail",Toast.LENGTH_SHORT).show()
     }
-
-
     }
 }
 
