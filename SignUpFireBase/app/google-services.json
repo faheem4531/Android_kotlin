@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50295580041",
+    "project_id": "signup-kotlin",
+    "storage_bucket": "signup-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50295580041:android:942eebaf5d73fdfd502d58",
+        "android_client_info": {
+          "package_name": "com.example.signupfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3KcEnR4vw5zI5k4aeWQKP9Ys9tI7KP8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
