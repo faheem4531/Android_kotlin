@@ -32,14 +32,13 @@ class Login : AppCompatActivity() {
     //OverRide to our menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        val guestLogin = menu?.findItem(R.id.directLogin)
 
         menu?.let { actualMenu ->
             val searchItem = actualMenu.findItem(R.id.search)
             val searchView = searchItem.actionView as? SearchView
 
             searchView?.apply {
-                queryHint = "Search Google"
+                queryHint = "Search "
                 // Set listeners or handle search functionality
             }
         }

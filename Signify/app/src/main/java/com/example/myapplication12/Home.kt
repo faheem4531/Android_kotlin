@@ -18,6 +18,7 @@ class Home : AppCompatActivity() {
         var welcome =    findViewById<TextView>  (R.id.welcomeUser)
         val intent = intent
         var email = intent.getStringExtra("mail")
+        if (email!=null)
         welcome.text = "user: " + email
     }
 
