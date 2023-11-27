@@ -2,8 +2,15 @@ package com.example.signupfirebase
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.Toast
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     lateinit var requestBtn : Button
@@ -23,13 +30,13 @@ class MainActivity : AppCompatActivity() {
     private fun post_signup_data_to_firebase(){
 
 //    decleration
-    var name = findViewById<EditText> (R.id.name_id)
-    var email = findViewById<EditText> (R.id.email_id)
+    var name =     findViewById<EditText> (R.id.name_id)
+    var email =    findViewById<EditText> (R.id.email_id)
     var password = findViewById<EditText> (R.id.password_id)
 
 //    convert to string
-    var name_ = name.text.toString()
-    var email_ = email.text.toString()
+    var name_ =     name.text.toString()
+    var email_ =    email.text.toString()
     var password_ = password.text.toString()
 
 
@@ -54,6 +61,45 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+//    Send data to firebase
+    val auth:FirebaseAuth= FirebaseAuth.getInstance()
+
+    var progress = findViewById<LinearLayout>  (R.id.progress_id)
+    var form =     findViewById<LinearLayout>  (R.id.form_container)
+
+    form.visibility =     View.GONE
+    progress.visibility = View.VISIBLE
+
+    auth.createUserWithEmailAndPassword(email_,password_).addOnCompleteListener(){
+
+        form.visibility=View.VISIBLE
+        progress.visibility=View.GONE
+
+        if (it.isSuccessful)
+            Toast.makeText(this,"Signup Successful",Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(this,"Signup Fail",Toast.LENGTH_SHORT).show()
+    }
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
