@@ -1,18 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:foregroundGravity="center"
+    android:paddingHorizontal="20dp"
+    >
+<!--    Form Layout Wraper -->
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:id="@+id/form_container"
+    android:paddingTop="100dp"
+    >
 
+<!--    Heading Layout-->
     <TextView
-        android:layout_width="wrap_content"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="SignUp!"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    Name Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="24sp"
+            android:layout_marginRight="20dp"/>
+
+        <EditText
+            android:id="@+id/name_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Max ..."
+            android:textSize="24dp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+<!--    Email Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="24sp"
+            android:layout_marginRight="20dp"/>
+
+        <EditText
+            android:id="@+id/email_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="max@gmail.com"
+            android:inputType="textEmailAddress"
+            android:textSize="24dp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+<!--    Passward Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Passward"
+            android:textSize="24sp"
+            android:layout_marginRight="20dp"/>
+
+        <EditText
+            android:id="@+id/password_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="*********"
+            android:inputType="textEmailAddress"
+            android:textSize="24dp"
+            />
+    </LinearLayout>
+
+<!--    Submit Button -->
+
+    <Button
+        android:id="@+id/signup_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        android:textSize="24sp"
+        android:text="Signup"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
+
+<!--    ProgressBar -->
+    <LinearLayout
+        android:id="@+id/progress_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
