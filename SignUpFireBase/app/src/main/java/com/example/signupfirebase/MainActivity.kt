@@ -75,11 +75,16 @@ class MainActivity : AppCompatActivity() {
         form.visibility=View.VISIBLE
         progress.visibility=View.GONE
 
-        if (it.isSuccessful)
-            Toast.makeText(this,"Signup Successful",Toast.LENGTH_SHORT).show()
+        if (it.isSuccessful) {
+            Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
+            name.text = null
+            email.text = null
+            password.text = null
+        }
         else
             Toast.makeText(this,"Signup Fail",Toast.LENGTH_SHORT).show()
     }
+
 
     }
 }

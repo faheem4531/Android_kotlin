@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Max ..."
-            android:textSize="20dp"
+            android:textSize="15dp"
             />
     </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:hint="max@gmail.com"
             android:inputType="textEmailAddress"
-            android:textSize="20dp"
+            android:textSize="15dp"
             />
     </LinearLayout>
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:hint="*********"
             android:inputType="textEmailAddress"
-            android:textSize="20dp"
+            android:textSize="15dp"
             />
     </LinearLayout>
 
