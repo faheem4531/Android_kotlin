@@ -1,5 +1,6 @@
 package com.example.signupfirebase
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
@@ -41,12 +43,12 @@ class MainActivity : AppCompatActivity() {
 
 
 //    Validation
-    if(name_.isEmpty())
-    {
-        name.setError("enter your name")
-        name.requestFocus()
-        return
-    }
+//    if(name_.isEmpty())
+//    {
+//        name.setError("enter your name")
+//        name.requestFocus()
+//        return
+//    }
     if(email_.isEmpty())
     {
         email.setError("enter valid email address")
@@ -82,9 +84,15 @@ class MainActivity : AppCompatActivity() {
             password.text = null
         }
         else
-            Toast.makeText(this,"Signup Fail",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Signup Fail : " +it.exception,Toast.LENGTH_SHORT).show()
     }
     }
+
+
+    fun signinIntent(view: View){
+        startActivity(Intent(this, Signin::class.java))
+    }
+
 }
 
 
