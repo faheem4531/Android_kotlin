@@ -1,5 +1,6 @@
 package com.example.signupfirebase
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -63,11 +64,13 @@ class Signin : AppCompatActivity() {
 
             if (it.isSuccessful) {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                email.text = null
+                password.text = null
+                startActivity(Intent(this, Home::class.java))
+
             }
             else
                 Toast.makeText(this,"Login Fail: "+it.exception, Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }
