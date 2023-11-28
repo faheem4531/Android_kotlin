@@ -82,6 +82,9 @@ class MainActivity : AppCompatActivity() {
             name.text = null
             email.text = null
             password.text = null
+            var home = Intent(this, Home::class.java)
+            home.putExtra("mail",email_)
+            startActivity(home)
         }
         else
             Toast.makeText(this,"Signup Fail : " +it.exception,Toast.LENGTH_SHORT).show()
