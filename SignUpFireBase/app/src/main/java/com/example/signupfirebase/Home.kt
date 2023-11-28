@@ -5,17 +5,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 class Home : AppCompatActivity() {
-    lateinit var tabBar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
 
-        tabBar=findViewById(R.id.tb_main)
+        var tabBar = findViewById<Toolbar>(R.id.tb_main)
+        var intent=intent
+        var user=intent.getStringExtra("mail")
+        tabBar.title = user
         setSupportActionBar(tabBar)
+
+
+        val title = tabBar.getChildAt(0) as? TextView
+        title?.let {
+            it.textSize = 18f // Set font size to 15sp
+        }
+
+
+
     }
 
 
@@ -37,9 +49,8 @@ class Home : AppCompatActivity() {
                 finish()
                 return true
             }
-            R.id.signup -> {
-//                var signUp = Intent (this, SignUp::class.java)
-//                startActivity(signUp)
+            R.id.logout -> {
+                startActivity(Intent(this,Signin::class.java))
                 return true
             }
         }

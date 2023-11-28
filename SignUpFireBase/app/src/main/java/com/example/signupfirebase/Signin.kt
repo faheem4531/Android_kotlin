@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 
 class Signin : AppCompatActivity() {
@@ -66,7 +67,9 @@ class Signin : AppCompatActivity() {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 email.text = null
                 password.text = null
-                startActivity(Intent(this, Home::class.java))
+                var home = Intent(this, Home::class.java)
+                home.putExtra("mail",email_)
+                startActivity(home)
 
             }
             else

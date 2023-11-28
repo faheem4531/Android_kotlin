@@ -35,7 +35,7 @@
 
             <!--    signUp-->
             <item
-                android:id="@+id/signup"
+                android:id="@+id/logout"
                 app:showAsAction=""
                 android:title="Logout"
                 android:icon="@drawable/baseline_logout_24"
