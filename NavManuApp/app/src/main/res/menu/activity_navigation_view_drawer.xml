@@ -17,9 +17,38 @@
             android:icon="@drawable/baseline_settings_24"
             android:title="Setings" />
 
+        <!--            Activity -->
+        <item android:id="@+id/activity"
+            android:title="Activity"
+            android:icon="@drawable/baseline_airplanemode_inactive_24"
+            >
+            <menu>
+                <item android:id="@+id/close_app"
+                    android:title="Close app"
+                    android:icon="@drawable/baseline_closeapp_24"
+                    />
+
+                <item android:id="@+id/restart_app"
+                    android:title="Restart app"
+                    android:icon="@drawable/baseline_restart_alt_24"
+                    />
+            </menu>
+
+        </item>
+        <!--            Logout -->
         <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/baseline_logout_24"
-            android:title="Logout" />
+            android:title="Account Options"
+            >
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/baseline_logout_24"
+                    android:title="Logout" />
+            </menu>
+
+        </item>
+
     </group>
+
+
 </menu>

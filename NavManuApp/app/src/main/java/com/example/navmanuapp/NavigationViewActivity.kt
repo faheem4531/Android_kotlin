@@ -2,8 +2,6 @@ package com.example.navmanuapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -47,6 +45,15 @@ class NavigationViewActivity : AppCompatActivity() {
                     startActivity(Intent(this, Login::class.java))
                     true
                 }
+                R.id.restart_app ->{
+                    startActivity(Intent(this,Signup::class.java))
+                    finish()
+                    true
+                }
+                R.id.close_app ->{
+                   finishAffinity()
+                    true
+                }
                   else -> {
                 // Perform fragment navigation for other menu items
                 menuItem.isChecked = true
@@ -57,6 +64,7 @@ class NavigationViewActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
     override fun onSupportNavigateUp(): Boolean {
