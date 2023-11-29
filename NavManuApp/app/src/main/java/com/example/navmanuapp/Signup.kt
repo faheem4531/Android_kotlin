@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 class Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+        supportActionBar?.hide()
         var signUpBtn = findViewById<Button>(R.id.signup_btn)
 
         signUpBtn.setOnClickListener(){
@@ -27,9 +31,9 @@ class Signup : AppCompatActivity() {
         var password = findViewById<EditText> (R.id.password_id)
 
 //    convert to string
-//        var name_ =     name.text.toString()
-//        var email_ =    email.text.toString()
-//        var password_ = password.text.toString()
+        var name_ =     name.text.toString()
+        var email_ =    email.text.toString()
+        var password_ = password.text.toString()
 
 
 //    Validation
@@ -54,31 +58,31 @@ class Signup : AppCompatActivity() {
 
 
 //    Send data to firebase
-//        val auth:FirebaseAuth= FirebaseAuth.getInstance()
-//
-//        var progress = findViewById<LinearLayout>  (R.id.progress_id)
-//        var form =     findViewById<LinearLayout>  (R.id.form_container)
+        val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-//        form.visibility =     View.GONE
-//        progress.visibility = View.VISIBLE
-//
-//        auth.createUserWithEmailAndPassword(email_,password_).addOnCompleteListener(){
-//
-//            form.visibility=View.VISIBLE
-//            progress.visibility=View.GONE
+        var progress = findViewById<LinearLayout>  (R.id.progress_id)
+        var form =     findViewById<LinearLayout>  (R.id.form_container)
 
-//            if (it.isSuccessful) {
-//                Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
-//                name.text = null
-//                email.text = null
-//                password.text = null
+        form.visibility =     View.GONE
+        progress.visibility = View.VISIBLE
+
+        auth.createUserWithEmailAndPassword(email_,password_).addOnCompleteListener(){
+
+            form.visibility=View.VISIBLE
+            progress.visibility=View.GONE
+
+            if (it.isSuccessful) {
+                Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
+                name.text = null
+                email.text = null
+                password.text = null
                 var home = Intent(this,NavigationViewActivity::class.java)
 //                home.putExtra("mail",email_)
                 startActivity(home)
-//            }
-//            else
-//                Toast.makeText(this,"Signup Fail : " +it.exception,Toast.LENGTH_SHORT).show()
-//        }
+            }
+            else
+                Toast.makeText(this,"Signup Fail : " +it.exception,Toast.LENGTH_SHORT).show()
+        }
     }
 
 

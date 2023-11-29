@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431339734508",
+    "project_id": "nav-manu-app",
+    "storage_bucket": "nav-manu-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431339734508:android:2f08a30a5ded9873ceecc9",
+        "android_client_info": {
+          "package_name": "com.example.navmanuapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAptYaEv4-gkvM-o4JlPIpBuB9W4m0qUX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
