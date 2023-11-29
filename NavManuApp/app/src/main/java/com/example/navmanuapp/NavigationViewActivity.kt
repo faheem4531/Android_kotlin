@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.ui.NavigationUI
 import com.example.navmanuapp.databinding.ActivityNavigationViewBinding
 
 class NavigationViewActivity : AppCompatActivity() {
@@ -27,10 +28,6 @@ class NavigationViewActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarNavigationView.toolbar)
 
-//        binding.appBarNavigationView.fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_navigation_view)
@@ -50,8 +47,13 @@ class NavigationViewActivity : AppCompatActivity() {
                     startActivity(Intent(this, Login::class.java))
                     true
                 }
-
-                else -> true
+                  else -> {
+                // Perform fragment navigation for other menu items
+                menuItem.isChecked = true
+                drawerLayout.closeDrawers()
+                val handled = NavigationUI.onNavDestinationSelected(menuItem, navController)
+                handled || super.onOptionsItemSelected(menuItem)
+            }
             }
         }
     }

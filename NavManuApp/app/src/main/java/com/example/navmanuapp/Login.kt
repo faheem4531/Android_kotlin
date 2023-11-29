@@ -77,4 +77,8 @@ class Login : AppCompatActivity() {
                 Toast.makeText(this,"Login Fail: "+it.exception, Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun signupForm(view: View){
+        startActivity(Intent(this,Signup::class.java))
+    }
 }
