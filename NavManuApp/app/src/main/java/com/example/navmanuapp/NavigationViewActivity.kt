@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.navmanuapp.databinding.ActivityNavigationViewBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class NavigationViewActivity : AppCompatActivity() {
 
@@ -28,6 +29,8 @@ class NavigationViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarNavigationView.toolbar)
+
+        var auth: FirebaseAuth=FirebaseAuth.getInstance()
 
 
 
@@ -61,7 +64,9 @@ class NavigationViewActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_logout -> {
+                    auth.signOut()
                     startActivity(Intent(this, Login::class.java))
+                    finish()
                     true
                 }
                 R.id.restart_app ->{

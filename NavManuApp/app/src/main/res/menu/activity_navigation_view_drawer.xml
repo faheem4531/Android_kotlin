@@ -10,12 +10,12 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:icon="@drawable/baseline_insert_invitation_24"
+            android:title="Store user data" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/baseline_settings_24"
-            android:title="Setings" />
+            android:icon="@drawable/baseline_remove_red_eye_24"
+            android:title="View user data" />
 
         <!--            Activity -->
         <item android:id="@+id/activity"

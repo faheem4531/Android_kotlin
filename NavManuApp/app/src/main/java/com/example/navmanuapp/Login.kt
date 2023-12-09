@@ -36,20 +36,20 @@ class Login : AppCompatActivity() {
 
 
 //    Validation
-//        if(email_.isEmpty())
-//        {
-//            email.setError("enter correct email address")
-//            email.requestFocus()
-//            return
-//        }
-//        if(password_.isEmpty())
-//        {
-//            password.setError("enter correct email address")
-//            password.requestFocus()
-//            return
-//        }
-//
-//
+        if(email_.isEmpty())
+        {
+            email.setError("enter correct email address")
+            email.requestFocus()
+            return
+        }
+        if(password_.isEmpty())
+        {
+            password.setError("enter correct email address")
+            password.requestFocus()
+            return
+        }
+
+
 //    Send data to firebase
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -65,13 +65,11 @@ class Login : AppCompatActivity() {
             progress.visibility= View.GONE
 
             if (it.isSuccessful) {
+                var home = Intent(this, NavigationViewActivity::class.java)
+                startActivity(home)
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 email.text = null
                 password.text = null
-                var home = Intent(this, NavigationViewActivity::class.java)
-//                home.putExtra("mail",email_)
-                startActivity(home)
-
             }
             else
                 Toast.makeText(this,"Login Fail: "+it.exception, Toast.LENGTH_SHORT).show()

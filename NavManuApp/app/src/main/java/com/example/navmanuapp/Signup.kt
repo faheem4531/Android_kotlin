@@ -9,15 +9,21 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
 
 class Signup : AppCompatActivity() {
+    private lateinit var dbRef:DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
         supportActionBar?.hide()
-        var signUpBtn = findViewById<Button>(R.id.signup_btn)
+        var signUpBtn = findViewById <Button>  (R.id.signup_btn)
 
+        dbRef=FirebaseDatabase.getInstance().getReference("Signup")
         signUpBtn.setOnClickListener(){
             post_signup_data_to_firebase()
         }
@@ -36,25 +42,30 @@ class Signup : AppCompatActivity() {
         var password_ = password.text.toString()
 
 
+
 //    Validation
-//    if(name_.isEmpty())
-//    {
-//        name.setError("enter your name")
-//        name.requestFocus()
-//        return
-//    }
-//        if(email_.isEmpty())
-//        {
-//            email.setError("enter valid email address")
-//            email.requestFocus()
-//            return
-//        }
-//        if(password_.isEmpty())
-//        {
-//            password.setError("enter valid email address")
-//            password.requestFocus()
-//            return
-//        }
+        if(name_.isEmpty())
+        {
+            name.setError("enter your name")
+            name.requestFocus()
+            return
+        }
+        if(email_.isEmpty())
+        {
+            email.setError("enter valid email address")
+            email.requestFocus()
+            return
+        }
+        if(password_.isEmpty())
+        {
+            password.setError("enter valid email address")
+            password.requestFocus()
+            return
+        }
+
+
+
+
 
 
 //    Send data to firebase
@@ -72,12 +83,19 @@ class Signup : AppCompatActivity() {
             progress.visibility=View.GONE
 
             if (it.isSuccessful) {
+
+
+                //     Store user Data in DB
+                val userId=dbRef.push().key!!
+                val signupDetails = SignupClass(userId,name_,email_)
+                dbRef.child(userId).setValue(signupDetails)
+
+                //Toster
                 Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
                 name.text = null
                 email.text = null
                 password.text = null
                 var home = Intent(this,NavigationViewActivity::class.java)
-//                home.putExtra("mail",email_)
                 startActivity(home)
             }
             else
@@ -85,8 +103,21 @@ class Signup : AppCompatActivity() {
         }
     }
 
-
     fun signinIntent(view: View){
         startActivity(Intent(this, Login::class.java))
     }
+
     }
+
+
+
+class SignupClass(userId: String, name_: String, email_: String) {
+    var id:String=""
+    var name:String=""
+    var email:String=""
+    init {
+        this.id = userId
+        this.name = name_
+        this.email = email_
+    }
+}
