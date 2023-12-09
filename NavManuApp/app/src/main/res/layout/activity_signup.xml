@@ -34,7 +34,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="50dp"
                 >
 
                 <TextView
@@ -52,7 +52,6 @@
                     android:textSize="15dp"
                     />
             </LinearLayout>
-
 
             <!--    Email Layout -->
             <LinearLayout
@@ -102,13 +101,43 @@
                     />
             </LinearLayout>
 
+            <!--    Image Layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Select Image"
+                    android:textSize="20sp"
+                    android:layout_marginRight="20dp"/>
+
+                <Button
+                    android:id="@+id/imagePikerBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="select image"
+                    />
+
+                <ImageView
+                    android:id="@+id/signupImageShow"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+
+
             <!--    Submit Button -->
 
             <Button
                 android:id="@+id/signup_btn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Signup"
                 />

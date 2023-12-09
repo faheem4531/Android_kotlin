@@ -1,20 +1,28 @@
 package com.example.navmanuapp
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import android.widget.ImageView
 
 
-class Signup : AppCompatActivity() {
+class Signup<ImageView : View> : AppCompatActivity() {
     private lateinit var dbRef:DatabaseReference
+    private val PICK_IMAGE_REQUEST = 1
+    private lateinit var selectedImageUri: Uri
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,12 +31,19 @@ class Signup : AppCompatActivity() {
         supportActionBar?.hide()
 
         var signUpBtn = findViewById <Button>  (R.id.signup_btn)
+        var imageBtn = findViewById  <Button>  (R.id.imagePikerBtn)
 
-
+        imageBtn.setOnClickListener {
+            openGallery()
+        }
         signUpBtn.setOnClickListener(){
-            post_signup_data_to_firebase()
+//            post_signup_data_to_firebase()
         }
     }
+
+
+
+
 
     private fun post_signup_data_to_firebase() {
 
@@ -109,8 +124,35 @@ class Signup : AppCompatActivity() {
         startActivity(Intent(this, Login::class.java))
     }
 
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val imageBtn = findViewById<Button>(R.id.imagePikerBtn)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val selectedImageUri = data.data!!
+            val showImageX = findViewById<android.widget.ImageView>(R.id.signupImageShow)
+            showImageX.visibility = View.VISIBLE
+            imageBtn.visibility = View.GONE
+
+            Glide.with(this)
+                .load(selectedImageUri)
+                .into(showImageX)
+
+            // Now you can also proceed to upload the image to Firebase if needed
+            // uploadImageToFirebase(selectedImageUri)
+        }
+    }
+
+
+
+
+
+}
 
 
 class SignupClass( name_: String, email_: String) {
