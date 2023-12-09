@@ -21,9 +21,10 @@ class Signup : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
 
         supportActionBar?.hide()
+
         var signUpBtn = findViewById <Button>  (R.id.signup_btn)
 
-        dbRef=FirebaseDatabase.getInstance().getReference("Signup")
+
         signUpBtn.setOnClickListener(){
             post_signup_data_to_firebase()
         }
@@ -86,9 +87,10 @@ class Signup : AppCompatActivity() {
 
 
                 //     Store user Data in DB
-                val userId=dbRef.push().key!!
-                val signupDetails = SignupClass(userId,name_,email_)
-                dbRef.child(userId).setValue(signupDetails)
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                dbRef=FirebaseDatabase.getInstance().getReference("Signup").child(userId.toString())
+                val signupDetails = SignupClass(name_,email_)
+                dbRef.setValue(signupDetails)
 
                 //Toster
                 Toast.makeText(this, "Signup Successful", Toast.LENGTH_SHORT).show()
@@ -111,12 +113,10 @@ class Signup : AppCompatActivity() {
 
 
 
-class SignupClass(userId: String, name_: String, email_: String) {
-    var id:String=""
+class SignupClass( name_: String, email_: String) {
     var name:String=""
     var email:String=""
     init {
-        this.id = userId
         this.name = name_
         this.email = email_
     }
