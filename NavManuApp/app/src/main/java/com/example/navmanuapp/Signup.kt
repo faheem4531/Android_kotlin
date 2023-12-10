@@ -9,19 +9,19 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import android.widget.ImageView
 
 
 class Signup<ImageView : View> : AppCompatActivity() {
     private lateinit var dbRef:DatabaseReference
     private val PICK_IMAGE_REQUEST = 1
-    private lateinit var selectedImageUri: Uri
+    private lateinit var selectedImageUriGlobal: Uri
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class Signup<ImageView : View> : AppCompatActivity() {
             openGallery()
         }
         signUpBtn.setOnClickListener(){
-//            post_signup_data_to_firebase()
+            post_signup_data_to_firebase()
         }
     }
 
@@ -56,7 +56,6 @@ class Signup<ImageView : View> : AppCompatActivity() {
         var name_ =     name.text.toString()
         var email_ =    email.text.toString()
         var password_ = password.text.toString()
-
 
 
 //    Validation
@@ -104,7 +103,7 @@ class Signup<ImageView : View> : AppCompatActivity() {
                 //     Store user Data in DB
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
                 dbRef=FirebaseDatabase.getInstance().getReference("Signup").child(userId.toString())
-                val signupDetails = SignupClass(name_,email_)
+                val signupDetails = SignupClass(name_,email_,selectedImageUriGlobal.toString())
                 dbRef.setValue(signupDetails)
 
                 //Toster
@@ -135,6 +134,7 @@ class Signup<ImageView : View> : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val selectedImageUri = data.data!!
+            selectedImageUriGlobal = selectedImageUri
             val showImageX = findViewById<android.widget.ImageView>(R.id.signupImageShow)
             showImageX.visibility = View.VISIBLE
             imageBtn.visibility = View.GONE
@@ -143,8 +143,7 @@ class Signup<ImageView : View> : AppCompatActivity() {
                 .load(selectedImageUri)
                 .into(showImageX)
 
-            // Now you can also proceed to upload the image to Firebase if needed
-            // uploadImageToFirebase(selectedImageUri)
+
         }
     }
 
@@ -155,11 +154,13 @@ class Signup<ImageView : View> : AppCompatActivity() {
 }
 
 
-class SignupClass( name_: String, email_: String) {
+class SignupClass( name_: String, email_: String,image: String) {
     var name:String=""
     var email:String=""
+    var image:String=""
     init {
         this.name = name_
         this.email = email_
+        this.image = image
     }
 }
