@@ -34,6 +34,7 @@ class Signup : AppCompatActivity() {
     private lateinit var btnGallery: Button
     private lateinit var btnUploadImage: Button
 
+    private var authFlag: Boolean = false
     private var uri : Uri? = null
 
 
@@ -65,27 +66,30 @@ class Signup : AppCompatActivity() {
         }
 
         btnUploadImage.setOnClickListener {
+
+            var progress = findViewById<LinearLayout>  (R.id.progress_id)
+            var form =     findViewById<LinearLayout>  (R.id.form_container)
+
+            //upload image to fireBase store
             uri?.let { // Check if uri is not null
-                dbStorage.getReference("Images").child(System.currentTimeMillis().toString())
+                form.visibility =     View.GONE
+                progress.visibility = View.VISIBLE
+
+                dbStorage.getReference("Profile Images").child(System.currentTimeMillis().toString())
                     .putFile(it)
                     .addOnSuccessListener { task ->
                         task.metadata?.reference?.downloadUrl
-                            ?.addOnSuccessListener { downloadUri ->
-                                val userId = FirebaseAuth.getInstance().currentUser?.uid
-                                val imageMap = mapOf("url" to downloadUri.toString())
+                            ?.addOnSuccessListener {downloadUri->
 
-                                userId?.let { uid ->
-                                    dbRef = FirebaseDatabase.getInstance().getReference("Signup").child(uid)
-                                    dbRef.setValue(imageMap)
-                                        .addOnSuccessListener {
+                                        uri = downloadUri
+                                            form.visibility =     View.VISIBLE
+                                            progress.visibility = View.GONE
                                             Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show()
                                         }
-                                        .addOnFailureListener { exception ->
+                                        ?.addOnFailureListener { exception ->
                                             Toast.makeText(this, exception.toString(), Toast.LENGTH_SHORT).show()
                                         }
                                 }
-                            }
-                    }
             } ?: run {
                 Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show()
             }
@@ -138,7 +142,6 @@ class Signup : AppCompatActivity() {
 
 
 
-
 //    Send data to firebase
         val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
@@ -155,11 +158,10 @@ class Signup : AppCompatActivity() {
 
             if (it.isSuccessful) {
 
-
                 //     Store user Data in DB
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
                 dbRef=FirebaseDatabase.getInstance().getReference("Signup").child(userId.toString())
-                val signupDetails = SignupClass(name_,email_)
+                val signupDetails = SignupClass(name_,email_,uri.toString())
                 dbRef.setValue(signupDetails)
 
                 //Toster
@@ -178,17 +180,16 @@ class Signup : AppCompatActivity() {
     fun signinIntent(view: View){
         startActivity(Intent(this, Login::class.java))
     }
-
 }
 
 
-class SignupClass( name_: String, email_: String) {
+class SignupClass( name_: String, email_: String,uri:String) {
     var name:String=""
     var email:String=""
-//    var image:String=""
+    var imageUrl:String=""
     init {
         this.name = name_
         this.email = email_
-//        this.image = image
+        this.imageUrl = uri
     }
 }
