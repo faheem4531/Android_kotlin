@@ -13,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -50,12 +51,12 @@ class NavigationViewActivity : AppCompatActivity() {
 
 
         // Load and display a rounded image in the header of NavigationView
-        val headerView = navView.getHeaderView(0)
-        val imageView: ImageView = headerView.findViewById(R.id.imageView)
-        Glide.with(this)
-            .load(R.drawable.profile) // Replace with your image resource or URL
-            .transform(CircleCrop()) // Apply circular transformation
-            .into(imageView)
+//        val headerView = navView.getHeaderView(0)
+//        val imageView: ImageView = headerView.findViewById(R.id.imageView)
+//        Glide.with(this)
+//            .load(R.drawable.profile) // Replace with your image resource or URL
+//            .transform(CircleCrop()) // Apply circular transformation
+//            .into(imageView)
 
 
 
@@ -109,14 +110,20 @@ class NavigationViewActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val dbName = snapshot.child("name").getValue(String::class.java)
                     val dbEmail = snapshot.child("email").getValue(String::class.java)
+                    val dbImage = snapshot.child("image").getValue(String::class.java)
 
                     val headerView = binding.navView.getHeaderView(0)
                     val userNameTextView: TextView = headerView.findViewById(R.id.userName)
                     val userEmailTextView: TextView = headerView.findViewById(R.id.userEmail)
+                    val displayImage : ImageView = headerView.findViewById(R.id.imageView)
 
                     userNameTextView.text = dbName
                     userEmailTextView.text = dbEmail
 
+                        Glide.with(this@NavigationViewActivity) // Use your activity reference
+                            .load(dbImage)
+                            .transform(CircleCrop()) // Apply circular transformation
+                            .into(displayImage)
                 }
             }
 

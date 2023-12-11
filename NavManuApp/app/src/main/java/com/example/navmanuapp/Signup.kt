@@ -12,16 +12,23 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultCaller
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 
-class Signup<ImageView : View> : AppCompatActivity() {
+class Signup : AppCompatActivity() {
     private lateinit var dbRef:DatabaseReference
-    private val PICK_IMAGE_REQUEST = 1
-    private lateinit var selectedImageUriGlobal: Uri
+
+    private lateinit var imageView: ImageView
+    private lateinit var btnGallery: Button
+    private lateinit var btnUploadImage: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +37,28 @@ class Signup<ImageView : View> : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        var signUpBtn = findViewById <Button>  (R.id.signup_btn)
-        var imageBtn = findViewById  <Button>  (R.id.imagePikerBtn)
+//        var signUpBtn = findViewById <Button>  (R.id.signup_btn)
+        btnUploadImage = findViewById  (R.id.imageUploadBtn)
+        btnGallery  =  findViewById   (R.id.imagePikerBtn)
+        imageView = findViewById (R.id.signupImageShow)
 
-        imageBtn.setOnClickListener {
-            openGallery()
+        var galleryImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                imageView.setImageURI(it)
+            }
+        )
+
+        btnGallery.setOnClickListener {
+            galleryImage.launch("image/*")
         }
-        signUpBtn.setOnClickListener(){
-            post_signup_data_to_firebase()
-        }
+
+
+
+//        signUpBtn.setOnClickListener(){
+
+//            post_signup_data_to_firebase()
+//        }
     }
 
 
@@ -103,7 +123,7 @@ class Signup<ImageView : View> : AppCompatActivity() {
                 //     Store user Data in DB
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
                 dbRef=FirebaseDatabase.getInstance().getReference("Signup").child(userId.toString())
-                val signupDetails = SignupClass(name_,email_,selectedImageUriGlobal.toString())
+                val signupDetails = SignupClass(name_,email_)
                 dbRef.setValue(signupDetails)
 
                 //Toster
@@ -123,44 +143,16 @@ class Signup<ImageView : View> : AppCompatActivity() {
         startActivity(Intent(this, Login::class.java))
     }
 
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val imageBtn = findViewById<Button>(R.id.imagePikerBtn)
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val selectedImageUri = data.data!!
-            selectedImageUriGlobal = selectedImageUri
-            val showImageX = findViewById<android.widget.ImageView>(R.id.signupImageShow)
-            showImageX.visibility = View.VISIBLE
-            imageBtn.visibility = View.GONE
-
-            Glide.with(this)
-                .load(selectedImageUri)
-                .into(showImageX)
-
-
-        }
-    }
-
-
-
-
-
 }
 
 
-class SignupClass( name_: String, email_: String,image: String) {
+class SignupClass( name_: String, email_: String) {
     var name:String=""
     var email:String=""
-    var image:String=""
+//    var image:String=""
     init {
         this.name = name_
         this.email = email_
-        this.image = image
+//        this.image = image
     }
 }
