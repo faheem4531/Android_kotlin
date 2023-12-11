@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -67,8 +68,9 @@ class Signup : AppCompatActivity() {
 
         btnUploadImage.setOnClickListener {
 
-            var progress = findViewById<LinearLayout>  (R.id.progress_id)
-            var form =     findViewById<LinearLayout>  (R.id.form_container)
+            var progress = findViewById <LinearLayout>  (R.id.progress_id)
+            var form =     findViewById <LinearLayout>  (R.id.form_container)
+            var checkbox = findViewById <CheckBox> (R.id.imageChecked)
 
             //upload image to fireBase store
             uri?.let { // Check if uri is not null
@@ -84,6 +86,11 @@ class Signup : AppCompatActivity() {
                                         uri = downloadUri
                                             form.visibility =     View.VISIBLE
                                             progress.visibility = View.GONE
+                                            checkbox.visibility = View.VISIBLE
+                                            imageView.visibility = View.GONE
+                                            btnUploadImage.visibility = View.GONE
+                                            btnGallery.visibility = View.GONE
+
                                             Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show()
                                         }
                                         ?.addOnFailureListener { exception ->

@@ -50,15 +50,6 @@ class NavigationViewActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_navigation_view)
 
 
-        // Load and display a rounded image in the header of NavigationView
-//        val headerView = navView.getHeaderView(0)
-//        val imageView: ImageView = headerView.findViewById(R.id.imageView)
-//        Glide.with(this)
-//            .load(R.drawable.profile) // Replace with your image resource or URL
-//            .transform(CircleCrop()) // Apply circular transformation
-//            .into(imageView)
-
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -110,7 +101,7 @@ class NavigationViewActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val dbName = snapshot.child("name").getValue(String::class.java)
                     val dbEmail = snapshot.child("email").getValue(String::class.java)
-                    val dbImage = snapshot.child("image").getValue(String::class.java)
+                    val dbImage = snapshot.child("imageUrl").getValue(String::class.java)
 
                     val headerView = binding.navView.getHeaderView(0)
                     val userNameTextView: TextView = headerView.findViewById(R.id.userName)
@@ -120,10 +111,19 @@ class NavigationViewActivity : AppCompatActivity() {
                     userNameTextView.text = dbName
                     userEmailTextView.text = dbEmail
 
+                    if (dbImage != null) {
                         Glide.with(this@NavigationViewActivity) // Use your activity reference
                             .load(dbImage)
                             .transform(CircleCrop()) // Apply circular transformation
                             .into(displayImage)
+                    }
+                    else{
+                        Glide.with(this@NavigationViewActivity)
+                            .load(R.drawable.ic_menu_gallery) // Replace with your image resource or URL
+                            .transform(CircleCrop()) // Apply circular transformation
+                            .into(displayImage)
+
+                    }
                 }
             }
 
