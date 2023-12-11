@@ -18,17 +18,23 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.storage
 
 
 class Signup : AppCompatActivity() {
-    private lateinit var dbRef:DatabaseReference
+    private lateinit var dbRef : DatabaseReference
+    private  var dbStorage = Firebase.storage
 
     private lateinit var imageView: ImageView
     private lateinit var btnGallery: Button
     private lateinit var btnUploadImage: Button
+
+    private var uri : Uri? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,15 +43,20 @@ class Signup : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-//        var signUpBtn = findViewById <Button>  (R.id.signup_btn)
+        dbStorage = FirebaseStorage.getInstance()
+
+        var signUpBtn = findViewById <Button>  (R.id.signup_btn)
         btnUploadImage = findViewById  (R.id.imageUploadBtn)
         btnGallery  =  findViewById   (R.id.imagePikerBtn)
         imageView = findViewById (R.id.signupImageShow)
 
         var galleryImage = registerForActivityResult(
             ActivityResultContracts.GetContent(),
-            ActivityResultCallback {
-                imageView.setImageURI(it)
+            ActivityResultCallback {Url ->
+                Url?.let {
+                    imageView.setImageURI(Url)
+                    uri = Url
+                }
             }
         )
 
@@ -53,12 +64,37 @@ class Signup : AppCompatActivity() {
             galleryImage.launch("image/*")
         }
 
+        btnUploadImage.setOnClickListener {
+            uri?.let { // Check if uri is not null
+                dbStorage.getReference("Images").child(System.currentTimeMillis().toString())
+                    .putFile(it)
+                    .addOnSuccessListener { task ->
+                        task.metadata?.reference?.downloadUrl
+                            ?.addOnSuccessListener { downloadUri ->
+                                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                                val imageMap = mapOf("url" to downloadUri.toString())
+
+                                userId?.let { uid ->
+                                    dbRef = FirebaseDatabase.getInstance().getReference("Signup").child(uid)
+                                    dbRef.setValue(imageMap)
+                                        .addOnSuccessListener {
+                                            Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show()
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            Toast.makeText(this, exception.toString(), Toast.LENGTH_SHORT).show()
+                                        }
+                                }
+                            }
+                    }
+            } ?: run {
+                Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
-//        signUpBtn.setOnClickListener(){
-
-//            post_signup_data_to_firebase()
-//        }
+        signUpBtn.setOnClickListener(){
+            post_signup_data_to_firebase()
+        }
     }
 
 
