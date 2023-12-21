@@ -117,13 +117,14 @@ class NavigationViewActivity : AppCompatActivity() {
                             .transform(CircleCrop()) // Apply circular transformation
                             .into(displayImage)
                     }
-                    else{
-                        Glide.with(this@NavigationViewActivity)
-                            .load(R.drawable.ic_menu_gallery) // Replace with your image resource or URL
-                            .transform(CircleCrop()) // Apply circular transformation
-                            .into(displayImage)
-
-                    }
+//                    else{
+//                        var dumyImage= "https://firebasestorage.googleapis.com/v0/b/nav-manu-app.appspot.com/o/Profile%20Images%2F1702379430996?alt=media&token=4b126353-1d61-4856-adca-9761736e011a"
+//                        Glide.with(this@NavigationViewActivity)
+//                            .load(dumyImage)
+//                            .transform(CircleCrop())
+//                            .into(displayImage)
+//
+//                    }
                 }
             }
 
