@@ -1,5 +1,6 @@
 package com.example.navmanuapp.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,7 +34,6 @@ class HomeFragment : Fragment() {
     private val dataList = mutableListOf("")
 
     private lateinit var dbRef : DatabaseReference
-    private var key : Int = 0
 
     private val binding get() = _binding!!
 
@@ -68,12 +68,6 @@ class HomeFragment : Fragment() {
                         Toast.makeText(requireContext(), "fail", Toast.LENGTH_SHORT).show()
                     }
 
-
-
-
-
-
-
                 dataList.add(newHobby)
                 adapter.notifyDataSetChanged() // Update the ListView
                 hobby.text.clear()
@@ -89,14 +83,15 @@ class HomeFragment : Fragment() {
            dbRef.addValueEventListener(object : ValueEventListener {
                override fun onDataChange(snapshot: DataSnapshot) {
                    dataList.clear()
-                   for (hobby in snapshot.children){
-                       val currentHobby = hobby.getValue(String::class.java)
-                       if (currentHobby != null){
-                           dataList.add(currentHobby.toString())
+                   for (hobbySnapshot in snapshot.children) {
+                       val currentHobby = hobbySnapshot.getValue(String::class.java)
+                       if (currentHobby != null ) {
+                           dataList.add(currentHobby)
                        }
                    }
                    adapter.notifyDataSetChanged()
                }
+
 
                override fun onCancelled(error: DatabaseError) {
                    // Handle onCancelled
@@ -113,9 +108,9 @@ class HomeFragment : Fragment() {
         listView.adapter = adapter
 
 
-
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
