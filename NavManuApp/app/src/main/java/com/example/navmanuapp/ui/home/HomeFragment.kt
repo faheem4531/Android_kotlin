@@ -48,6 +48,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        Log.d("YourFragment", "onCreateView")
+
         //Add hobby
         val btnAddHoby = root.findViewById<Button>(R.id.btnAddHobby)
         val hobby = root.findViewById<EditText>(R.id.addHobby)
@@ -111,11 +113,36 @@ class HomeFragment : Fragment() {
         return root
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//        Log.d("YourFragment", "onStart")
+//    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onResume() {
+        super.onResume()
+        Log.d("YourFragment", "onResume")
     }
+
+//    override fun onPause() {
+//        super.onPause()
+//        Log.d("YourFragment", "onPause")
+//    }
+
+//    override fun onStop() {
+//        super.onStop()
+//        Log.d("YourFragment", "onStop")
+//    }
+
+//    override fun onDetach() {
+//        super.onDetach()
+//        Log.d("YourFragment", "onDetach")
+//    }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        Log.d("YourFragment", "onDestroy")
+//        _binding = null
+//    }
 }
 
 
